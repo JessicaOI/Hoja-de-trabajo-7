@@ -37,13 +37,13 @@ public class Association<K,V> implements MapEntry<K,V>{
     //da la llave
     @Override
     public K getKey() {
-        return null;
+        return theKey;
     }
 
     //da el valor
     @Override
     public V getValue() {
-        return null;
+        return theValue;
     }
 
     //da el vaor de la pareja key-value

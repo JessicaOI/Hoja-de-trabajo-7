@@ -17,5 +17,7 @@ public class Palabras {
 
     }
 
+    //public compPalabras()
+
 
 }

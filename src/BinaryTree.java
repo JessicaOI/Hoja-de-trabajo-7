@@ -4,14 +4,14 @@ public class BinaryTree<E> {
     protected BinaryTree<E> parent; // parent of node
     protected BinaryTree<E> left, right; // children of node
 
-    public BinaryTree(){
+    public BinaryTree() {
         val = null;
-        parent = null; left = right = this;
+        parent = null;
+        left = right = this;
     }
 
     // post: constructor that generates an empty node
-    public BinaryTree(E value)
-    {
+    public BinaryTree(E value) {
         //Assert.pre(value != null, "Tree values must be non-null.");
         val = value;
         right = left = new BinaryTree<E>();
@@ -20,43 +20,41 @@ public class BinaryTree<E> {
     }
 
     // post: returns a tree referencing value and two empty subtrees
-    public BinaryTree(E value, BinaryTree<E> left, BinaryTree<E> right)
-    {
+    public BinaryTree(E value, BinaryTree<E> left, BinaryTree<E> right) {
         //Assert.pre(value != null, "Tree values must be non-null.");
         val = value;
-        if (left == null) { left = new BinaryTree<E>(); }
+        if (left == null) {
+            left = new BinaryTree<E>();
+        }
         setLeft(left);
-        if (right == null) { right = new BinaryTree<E>(); }
+        if (right == null) {
+            right = new BinaryTree<E>();
+        }
         setRight(right);
     }
     // post: returns a tree referencing value and two subtrees
 
-    public BinaryTree<E> left()
-    {
+    public BinaryTree<E> left() {
         return left;
     }
 
     /**
      * Get right subtree of current node
      *
-     * @post Returns reference to (possibly empty) right subtree
-     *
      * @return The right subtree of this node
+     * @post Returns reference to (possibly empty) right subtree
      */
-    public BinaryTree<E> right()
-    {
+    public BinaryTree<E> right() {
         return right;
     }
 
     // post: returns reference to (possibly empty) left subtree
-    public BinaryTree<E> parent()
-    {
+    public BinaryTree<E> parent() {
         return parent;
     }
 
     // post: returns reference to parent node, or null
-    public void setLeft(BinaryTree<E> newLeft)
-    {
+    public void setLeft(BinaryTree<E> newLeft) {
         if (isEmpty()) return;
         if (left != null && left.parent() == this) left.setParent(null);
         left = newLeft;
@@ -67,35 +65,30 @@ public class BinaryTree<E> {
 
 
     //acualizar el lado derecho edl subarbol
-    public void setRight(BinaryTree<E> newRight)
-    {
+    public void setRight(BinaryTree<E> newRight) {
         if (isEmpty()) return;
         if (right != null && right.parent() == this) right.setParent(null);
         right = newRight;
         right.setParent(this);
     }
 
-    protected void setParent(BinaryTree<E> newParent)
-    {
+    protected void setParent(BinaryTree<E> newParent) {
         if (!isEmpty()) {
             parent = newParent;
         }
     }
 
-    public int size()
-    {
+    public int size() {
         if (isEmpty()) return 0;
         return left().size() + right().size() + 1;
     }
 
-    public BinaryTree<E> root()
-    {
+    public BinaryTree<E> root() {
         if (parent() == null) return this;
         else return parent().root();
     }
 
-    public boolean isEmpty()
-    {
+    public boolean isEmpty() {
         return val == null;
     }
 
@@ -103,12 +96,10 @@ public class BinaryTree<E> {
     /**
      * Determine if this node is a left child
      *
-     * @post Returns true if this is a left child of parent
-     *
      * @return True iff this node is a left child of parent
+     * @post Returns true if this is a left child of parent
      */
-    public boolean isLeftChild()
-    {
+    public boolean isLeftChild() {
         if (parent() == null) return false;
         return this == parent().left();
     }
@@ -116,12 +107,10 @@ public class BinaryTree<E> {
     /**
      * Determine if this node is a right child
      *
-     * @post Returns true if this is a right child of parent
-     *
      * @return True iff this node is a right child of parent
+     * @post Returns true if this is a right child of parent
      */
-    public boolean isRightChild()
-    {
+    public boolean isRightChild() {
         if (parent() == null) return false;
         return this == parent().right();
     }
@@ -129,31 +118,27 @@ public class BinaryTree<E> {
     /**
      * Returns value associated with this node
      *
-     * @post Returns value associated with this node
-     *
      * @return The node's value
+     * @post Returns value associated with this node
      */
-    public E value()
-    {
+    public E value() {
         return val;
     }
 
     /**
      * Set's value associated with this node
      *
-     * @post Sets the value associated with this node
      * @param value The new value of this node
+     * @post Sets the value associated with this node
      */
-    public void setValue(E value)
-    {
+    public void setValue(E value) {
         val = value;
     }
 
     /**
      * @post return sum of hashcodes of the contained values
      */
-    public int hashCode()
-    {
+    public int hashCode() {
         if (isEmpty()) return 0;
         int result = left().hashCode() + right().hashCode();
         if (value() != null) result += value().hashCode();
@@ -164,11 +149,10 @@ public class BinaryTree<E> {
      * Compute the depth of a node.  The depth is the path length
      * from node to root
      *
-     * @post Returns the depth of a node in the tree
      * @return The path length to root of tree
+     * @post Returns the depth of a node in the tree
      */
-    public int depth()
-    {
+    public int depth() {
         if (parent() == null) return 0;
         return 1 + parent.depth();
     }
@@ -179,9 +163,9 @@ public class BinaryTree<E> {
      *
      * @return A string representing the tree rooted at this node.
      */
-    public String treeString(){
+    public String treeString() {
         String s = "";
-        for (int i=0; i < this.depth(); i++){
+        for (int i = 0; i < this.depth(); i++) {
             s += "\t|";
         }
 
@@ -202,7 +186,7 @@ public class BinaryTree<E> {
      * is a right child, L if this node is a left child and Root if this
      * node is the root.
      */
-    private String getHand(){
+    private String getHand() {
         if (isRightChild()) return "R";
         if (isLeftChild()) return "L";
         return "Root";
@@ -212,23 +196,38 @@ public class BinaryTree<E> {
     /**
      * Returns a representation the subtree rooted at this node
      *
-     * @post Returns string representation
-     *
      * @return String representing this subtree
+     * @post Returns string representation
      */
 
-    public String toString()
-    {
+    public String toString() {
         if (isEmpty()) return "<BinaryTree: empty>";
         StringBuffer s = new StringBuffer();
-        s.append("<BinaryTree "+value());
-        if (!left().isEmpty()) s.append(" "+left());
+        s.append("<BinaryTree " + value());
+        if (!left().isEmpty()) s.append(" " + left());
         else s.append(" -");
-        if (!right().isEmpty()) s.append(" "+right());
+        if (!right().isEmpty()) s.append(" " + right());
         else s.append(" -");
         s.append('>');
         return s.toString();
     }
+
+
+    public void inorderIterator(BinaryTree nod) {
+        if (nod.isEmpty())
+            return;
+
+        /* recorrer todos los del lado derecho */
+        inorderIterator(nod.left());
+
+        /* imprimir la información del nodo */
+        System.out.print(nod.value() + " ");
+
+        /* recorrer todos los del lado derecho */
+        inorderIterator(nod.right());
+    }
+    // post: constructs an iterator to traverse in in-order
+
 
 
 }

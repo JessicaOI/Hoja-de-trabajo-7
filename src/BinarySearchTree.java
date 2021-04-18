@@ -124,4 +124,9 @@ public class BinarySearchTree<E extends Comparable<E>>
         count++;
     }
 
+    public void iterator()
+    {
+        root.inorderIterator(this.root);
+    }
+
 }

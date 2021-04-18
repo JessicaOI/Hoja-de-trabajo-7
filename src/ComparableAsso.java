@@ -20,6 +20,19 @@ public class ComparableAsso<K extends Comparable<K>,V>
     {
         return this.getKey().compareTo(that.getKey());
     }
-
     //string del comparable association
+
+    /**
+     * Construct a string representation of the ComparableAssociation.
+     *
+     * @post returns string representation
+     *
+     * @return The string representing the ComparableAssociation.
+     */
+    public String toString()
+    {
+        StringBuffer s = new StringBuffer();
+        s.append("<ComparableAssociation: "+getKey()+"="+getValue()+">");
+        return s.toString();
+    }
 }

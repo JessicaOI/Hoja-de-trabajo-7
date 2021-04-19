@@ -12,6 +12,10 @@ public class Main {
         String respuesta2 = null;
         String respuesta = null;
 
+        boolean cont = true;
+        boolean cont2 = true;
+        boolean cont3 = true;
+
         Scanner scan = new Scanner(System.in);
 
         BinarySearchTree ing = new BinarySearchTree();
@@ -55,7 +59,7 @@ public class Main {
             e.printStackTrace();
         }
 
-        ing.iterator();
+        esp.iterator();
 
 
         while (true)
@@ -68,6 +72,7 @@ public class Main {
             System.out.println("c. Frances");
             System.out.println("opción:");
             respuesta = scan.nextLine().toLowerCase();
+
             if(respuesta.equals("a"))
             {
                 System.out.println("¿A que idioma desea traducirlo?");
@@ -75,14 +80,48 @@ public class Main {
                 System.out.println("c. Frances");
                 System.out.println("opción:");
                 respuesta2 = scan.nextLine().toLowerCase();
+                while (cont)
+                {
+                    if(respuesta2.equals("b")||respuesta2.equals("c"))
+                    {
+                        cont = false;
+                    }
+                    else
+                    {
+                        System.out.println("porfavor ingrese una de las opciones dadas");
+                        System.out.println("¿A que idioma desea traducirlo?");
+                        System.out.println("b. Español");
+                        System.out.println("c. Frances");
+                        System.out.println("opción:");
+                        respuesta2 = scan.nextLine().toLowerCase();
+                    }
+                }
+
+
             }
             else if(respuesta.equals("b"))
             {
                 System.out.println("¿A que idioma desea traducirlo?");
-                System.out.println("b. Ingles");
+                System.out.println("a. Ingles");
                 System.out.println("c. Frances");
                 System.out.println("opción:");
                 respuesta2 = scan.nextLine().toLowerCase();
+                while (cont2)
+                {
+                    if(respuesta2.equals("a")||respuesta2.equals("c"))
+                    {
+                        cont2 = false;
+                    }
+                    else
+                    {
+                        System.out.println("porfavor ingrese una de las opciones dadas");
+                        System.out.println("¿A que idioma desea traducirlo?");
+                        System.out.println("a. Ingles");
+                        System.out.println("c. Frances");
+                        System.out.println("opción:");
+                        respuesta2 = scan.nextLine().toLowerCase();
+                    }
+                }
             }
             else if(respuesta.equals("c"))
             {
@@ -91,8 +130,23 @@ public class Main {
                 System.out.println("b. Español");
                 System.out.println("opción:");
                 respuesta2 = scan.nextLine().toLowerCase();
+                while (cont3)
+                {
+                    if(respuesta2.equals("a")||respuesta2.equals("b"))
+                    {
+                        cont3 = false;
+                    }
+                    else
+                    {
+                        System.out.println("porfavor ingrese una de las opciones dadas");
+                        System.out.println("¿A que idioma desea traducirlo?");
+                        System.out.println("a. Ingles");
+                        System.out.println("b. Español");
+                        System.out.println("opción:");
+                        respuesta2 = scan.nextLine().toLowerCase();
+                    }
+                }
             }
-
 
             try {
                 // Apertura del fichero y creacion de BufferedReader para poder
@@ -110,7 +164,8 @@ public class Main {
 
                     //Palabras pal = new Palabras(palabra);
 
-                    System.out.println(traducir.getTraducida(palabra,respuesta,ing,esp,fra));
+                    System.out.println(traducir.getTraducida(palabra,respuesta,ing,esp,fra,respuesta2));
+                    System.out.println();
 
                 }
 

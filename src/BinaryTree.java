@@ -1,3 +1,4 @@
+import java.util.Iterator;
 public class BinaryTree<E> {
 
     protected E val; // value associated with node
@@ -227,7 +228,5 @@ public class BinaryTree<E> {
         inorderIterator(nod.right());
     }
     // post: constructs an iterator to traverse in in-order
-
-
 
 }

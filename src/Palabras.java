@@ -5,9 +5,9 @@ import java.util.Scanner;
 
 public class Palabras {
 
-    public static String ingles;
-    public static String espa;
-    public static String frances;
+     String ingles;
+     String espa;
+     String frances;
 
     public Palabras(String[] palabra) {
         //guardamos los datos en variablesseparadas para cuando se necesiten y asi al mismo tiempo validamos que no interrumpan las mayudculas a la hora de comparar.
@@ -16,8 +16,38 @@ public class Palabras {
         frances = palabra[2].toLowerCase();
 
     }
+    public String getPalabra(String l) {
+        /*return switch (l) {
+            case ("a") -> ingles;
+            case ("b") -> espa;
+            default -> frances;
 
-    //public compPalabras()
+        };*/
+
+        if(l.equals("a"))
+        {
+            return ingles;
+        }
+        else if(l.equals("b"))
+        {
+            return espa;
+        }
+        else if(l.equals("c"))
+        {
+            return frances;
+        }
+        else
+        {
+            return "Error, ingrese una opción correcta";
+        }
+
+    }
+    public String toString()
+    {
+        return "ingles:"+ingles+" /español:"+espa+" /frances:"+frances;
+    }
+
+
 
 
 }

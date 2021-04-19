@@ -1,7 +1,6 @@
 public class ComparableAsso<K extends Comparable<K>,V>
         extends Association<K,V>
-        implements Comparable<ComparableAsso<K,V>>
-        ,MapEntry<K,V> {
+        implements Comparable<ComparableAsso<K,V>> {
 
     //set null en el contructor
     public ComparableAsso(K key)

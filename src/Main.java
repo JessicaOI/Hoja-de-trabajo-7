@@ -9,6 +9,9 @@ public class Main {
         FileReader fr = null;
         BufferedReader br = null;
 
+        String respuesta2 = null;
+        String respuesta = null;
+
         Scanner scan = new Scanner(System.in);
 
         BinarySearchTree ing = new BinarySearchTree();
@@ -33,7 +36,7 @@ public class Main {
                 String data = linea.nextLine();
                 String[] palabra = data.split(",");
 
-                Palabras pal = new Palabras(palabra);
+                    Palabras pal = new Palabras(palabra);
 
                 //realizamos la comparación desde la versión extendida creada que es la de comparableasso
                 ComparableAsso ingles = new ComparableAsso(palabra[0], pal);
@@ -52,57 +55,76 @@ public class Main {
             e.printStackTrace();
         }
 
-        System.out.println("Bienvenido al traductor(ingles-español-frances");
+        ing.iterator();
 
-        System.out.println("¿En que idioma esta el texto que ingresará?");
-        System.out.println("a. Ingles");
-        System.out.println("b. Español");
-        System.out.println("c. Frances");
 
-        String respuesta = scan.nextLine().toLowerCase();
-        if(respuesta.equals("a"))
+        while (true)
         {
-            System.out.println("¿A que idioma desea traducirlo?");
-            System.out.println("a. Español");
-            System.out.println("b. Frances");
-        }
-        else if(respuesta.equals("b"))
-        {
-            System.out.println("¿A que idioma desea traducirlo?");
-            System.out.println("a. Ingles");
-            System.out.println("b. Frances");
-        }
-        else if(respuesta.equals("c"))
-        {
-            System.out.println("¿A que idioma desea traducirlo?");
+            System.out.println("Bienvenido al traductor(ingles-español-frances)");
+
+            System.out.println("¿En que idioma esta el texto que ingresará?");
             System.out.println("a. Ingles");
             System.out.println("b. Español");
-        }
-
-
-        try {
-            // Apertura del fichero y creacion de BufferedReader para poder
-            // hacer una lectura comoda (disponer del metodo readLine()).
-            archivo = new File("texto.txt");
-            Scanner linea = new Scanner(archivo);
-            fr = new FileReader(archivo);
-            br = new BufferedReader(fr);
-
-            // Lectura del fichero
-
-            while (linea.hasNextLine()) {
-                String data = linea.nextLine();
-                String[] palabra = data.split(" ");
-
-                Palabras pal = new Palabras(palabra);
-
-
-
+            System.out.println("c. Frances");
+            System.out.println("opción:");
+            respuesta = scan.nextLine().toLowerCase();
+            if(respuesta.equals("a"))
+            {
+                System.out.println("¿A que idioma desea traducirlo?");
+                System.out.println("b. Español");
+                System.out.println("c. Frances");
+                System.out.println("opción:");
+                respuesta2 = scan.nextLine().toLowerCase();
             }
-            linea.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+            else if(respuesta.equals("b"))
+            {
+                System.out.println("¿A que idioma desea traducirlo?");
+                System.out.println("b. Ingles");
+                System.out.println("c. Frances");
+                System.out.println("opción:");
+                respuesta2 = scan.nextLine().toLowerCase();
+            }
+            else if(respuesta.equals("c"))
+            {
+                System.out.println("¿A que idioma desea traducirlo?");
+                System.out.println("a. Ingles");
+                System.out.println("b. Español");
+                System.out.println("opción:");
+                respuesta2 = scan.nextLine().toLowerCase();
+            }
+
+
+            try {
+                // Apertura del fichero y creacion de BufferedReader para poder
+                // hacer una lectura comoda (disponer del metodo readLine()).
+                archivo = new File("texto.txt");
+                Scanner linea = new Scanner(archivo);
+                fr = new FileReader(archivo);
+                br = new BufferedReader(fr);
+
+                // Lectura del fichero
+
+                while (linea.hasNextLine()) {
+                    String data = linea.nextLine();
+                    String[] palabra = data.split(" ");
+
+                    //Palabras pal = new Palabras(palabra);
+
+                    System.out.println(traducir.getTraducida(palabra,respuesta,ing,esp,fra));
+
+                }
+
+                linea.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
         }
+
+
+
+
 
     }
 }
